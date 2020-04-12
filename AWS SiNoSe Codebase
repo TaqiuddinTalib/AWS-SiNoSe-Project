@@ -1,0 +1,12 @@
+//Open a terminal after creating private key. Navigate to directory that contains the private key
+$ cd /filepath_to_private_key/
+
+//Set permission 
+$ chmod 400 SiNoSe_Key.pem
+
+//From the directory that contains the key pair, connect to the instance, where 'instance-hostname' is the hostname copied from the Amazon EC2 console 
+$ ssh -i SiNoSe_Key.pem ec2-user@instance-hostname
+
+//Publish a message to the topic. 'aws-region' is based on the user's region. 'sns-topic-arn' is based on ARN from Amazon SNS
+$ aws sns publish --region aws-region --topic-arn sns-topic-arn --message "Hello"
+
